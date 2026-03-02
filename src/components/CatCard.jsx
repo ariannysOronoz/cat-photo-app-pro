@@ -7,17 +7,20 @@ export default function CatCard({ url, title, description }) {
       display: 'flex', 
       flexDirection: 'column',
       borderRadius: 4,
-      transition: 'transform 0.2s',
+      transition: 'transform 0.2s ' ,
       '&:hover': { transform: 'scale(1.03)' } // Efecto de zoom al pasar el mouse
     }}>
-      <CardActionArea>
+      
+      <CardActionArea >
         <CardMedia
           component="img"
           height="220"
           image={url}
           alt={title}
+          
         />
-        <CardContent>
+     
+        <CardContent >
           <Typography gutterBottom variant="h6" component="div" fontWeight="bold">
             {title}
           </Typography>

@@ -1,8 +1,10 @@
-import { Box , Container, Grid} from '@mui/material';
+import { Box , Container, Grid, Typography} from '@mui/material';
 import Hero from './components/Hero'; 
 import Navbar from './components/Navbar';
 import CatCard from './components/CatCard';
 import { catsData } from './catsData';
+import CatForm from './components/CatForm';
+
 function App() {
   return (
     <Box>
@@ -10,6 +12,11 @@ function App() {
       <Hero />
 
       <Container maxWidth="lg" sx={{ mt: 8 }}>
+
+        {/* La Galería */}
+        <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
+          Nuestra Galería
+        </Typography>
 
       <Grid container spacing={4}>
           {catsData.map((cat) => (
@@ -22,6 +29,14 @@ function App() {
             </Grid>
           ))}
         </Grid>
+
+        {/* El Formulario */}
+        <Box sx={{ mt: 10, maxWidth: 'md', mx: 'auto' }}>
+          <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
+            ¡Sube a tu Michi!
+          </Typography>
+          <CatForm /> 
+        </Box>
 
       </Container>
     </Box>

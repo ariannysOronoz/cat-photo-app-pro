@@ -4,8 +4,14 @@ import Navbar from './components/Navbar';
 import CatCard from './components/CatCard';
 import { catsData } from './catsData';
 import CatForm from './components/CatForm';
+import { useState } from 'react';
 
 function App() {
+  const [gatos, setGatos] = useState(catsData);
+  const agregarGato = (nuevoGato) => {
+    setGatos([nuevoGato, ...gatos]); 
+  };
+
   return (
     <Box>
       <Navbar />
@@ -19,7 +25,7 @@ function App() {
         </Typography>
 
       <Grid container spacing={4}>
-          {catsData.map((cat) => (
+          {gatos.map((cat) => (
             <Grid item key={cat.id} xs={12} sm={6} md={4}>
               <CatCard 
                 url={cat.url} 
@@ -35,7 +41,7 @@ function App() {
           <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
             ¡Sube a tu Michi!
           </Typography>
-          <CatForm /> 
+          <CatForm onAgregar={agregarGato}/> 
         </Box>
 
       </Container>

@@ -1,14 +1,32 @@
 import { Box, TextField, Button, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, FormGroup, Checkbox, Paper } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { useState } from 'react';
 
-export default function CatForm() {
-  return (
+export default function CatForm({onAgregar}) {
+  const [nombre, setNombre] = useState('');
+  const [url, setUrl] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Evita que la página se recargue (comportamiento clásico de HTML)
+  
+  const nuevoMichi = {
+      id: Date.now(), // Genera un número único aleatorio
+      title: nombre,
+      url: url,
+      description: "¡Un nuevo amigo peludo se ha unido a la pandilla de CatPhotoApp!"
+    };
+
+  onAgregar(nuevoMichi);
+  setNombre('');
+    setUrl('');
+  };
+    return (
     <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
       <Typography variant="h5" gutterBottom fontWeight="bold" color="primary">
         Detalles del Felino
       </Typography>
       
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         {/* Sección de Radio Buttons */}
         <FormControl component="fieldset" sx={{ mb: 3, mt: 2, display: 'block' }}>
           <FormLabel component="legend" sx={{ fontWeight: 'bold' }}>¿Tu gato es de interior o exterior?</FormLabel>
@@ -32,11 +50,22 @@ export default function CatForm() {
         <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
           <TextField 
             fullWidth 
-            label="URL de la foto de tu gato" 
+            label="Nombre del gato"
+            variant="outlined" 
+            onChange={(e) => setNombre(e.target.value)}
+            required 
+          />
+          <TextField 
+            fullWidth 
+            label="URL de la foto" 
             variant="outlined" 
             placeholder="https://ejemplo.com/foto.jpg" 
             required 
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
           />
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button 
             variant="contained" 
             color="primary" 

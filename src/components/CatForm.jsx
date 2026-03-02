@@ -1,6 +1,7 @@
 import { Box, TextField, Button, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, FormGroup, Checkbox, Paper } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function CatForm({onAgregar}) {
   const [nombre, setNombre] = useState('');

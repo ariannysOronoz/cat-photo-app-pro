@@ -11,6 +11,11 @@ function App() {
   const agregarGato = (nuevoGato) => {
     setGatos([nuevoGato, ...gatos]); 
   };
+   // Esta función agarra la lista de gatos y filtra (quita) al que tenga el ID que le pasemos
+  const eliminarGato = (idParaBorrar) => {
+    const nuevaLista = gatos.filter((gato) => gato.id !== idParaBorrar);
+    setGatos(nuevaLista);
+  };
 
   return (
     <Box>
@@ -30,7 +35,8 @@ function App() {
               <CatCard 
                 url={cat.url} 
                 title={cat.title} 
-                description={cat.description} 
+                description={cat.description}
+                onDelete={eliminarGato} 
               />
             </Grid>
           ))}

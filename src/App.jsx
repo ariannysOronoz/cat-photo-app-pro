@@ -6,6 +6,12 @@ import { catsData } from './catsData';
 import CatForm from './components/CatForm';
 import { useState } from 'react';
 
+
+// TODO: TAREA PARA MAÑANA - GUARDAR FOTOS AL RECARGAR
+  // 1. Importar 'useEffect' arriba.
+  // 2. Cambiar 'useState' para que lea de localStorage primero.
+  // 3. Usar 'useEffect' para guardar la lista en localStorage cada vez que cambie.
+
 function App() {
   const [gatos, setGatos] = useState(catsData);
   const agregarGato = (nuevoGato) => {
@@ -33,6 +39,7 @@ function App() {
           {gatos.map((cat) => (
             <Grid item key={cat.id} xs={12} sm={6} md={4}>
               <CatCard 
+                id={cat.id}
                 url={cat.url} 
                 title={cat.title} 
                 description={cat.description}

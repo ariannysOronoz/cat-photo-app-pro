@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import CatCard from './components/CatCard';
 import { catsData } from './catsData';
 import CatForm from './components/CatForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 // TODO: TAREA PARA MAÑANA - GUARDAR FOTOS AL RECARGAR
@@ -13,10 +13,19 @@ import { useState } from 'react';
   // 3. Usar 'useEffect' para guardar la lista en localStorage cada vez que cambie.
 
 function App() {
-  const [gatos, setGatos] = useState(catsData);
+  const [gatos, setGatos] = useState(() => {
+    const gatosGuardados = localStorage.getItem('misMichis');
+    return gatosGuardados ? JSON.parse(gatosGuardados) : catsData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('misMichis', JSON.stringify(gatos));
+  }, [gatos]);
+
   const agregarGato = (nuevoGato) => {
     setGatos([nuevoGato, ...gatos]); 
   };
+
    // Esta función agarra la lista de gatos y filtra (quita) al que tenga el ID que le pasemos
   const eliminarGato = (idParaBorrar) => {
     const nuevaLista = gatos.filter((gato) => gato.id !== idParaBorrar);

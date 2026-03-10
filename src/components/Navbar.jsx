@@ -28,9 +28,10 @@ export default function Navbar() {
 
         {/* Lado derecho: Links de navegación */}
         <Stack direction="row" spacing={2}>
-          <Button color="inherit" sx={{ textTransform: 'none' }}>Galería</Button>
-          <Button color="inherit" sx={{ textTransform: 'none' }}>Contacto</Button>
+          <Button color="inherit" href="#galeria" sx={{ textTransform: 'none' }}>Galería</Button>
+          <Button color="inherit"  sx={{ textTransform: 'none' }}>Contacto</Button>
           <Button 
+            href="#registro"
             variant="contained" 
             disableElevation 
             sx={{ borderRadius: 5, textTransform: 'none' }}

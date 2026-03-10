@@ -40,7 +40,7 @@ function App() {
       <Container maxWidth="lg" sx={{ mt: 8 }}>
 
         {/* La Galería */}
-        <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
+        <Typography id="galeria" variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
           Nuestra Galería
         </Typography>
 
@@ -60,7 +60,7 @@ function App() {
 
         {/* El Formulario */}
         <Box sx={{ mt: 10, maxWidth: 'md', mx: 'auto' }}>
-          <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
+          <Typography id="registro" variant="h4" fontWeight="bold" textAlign="center" gutterBottom sx={{ mb: 4 }}>
             ¡Sube a tu Michi!
           </Typography>
           <CatForm onAgregar={agregarGato}/> 
